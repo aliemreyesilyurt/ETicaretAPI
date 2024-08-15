@@ -20,34 +20,36 @@ namespace ETicaretAPI.API.Controllers
         [HttpGet]
         public async Task Get()
         {
-            await _productWriteRepository.AddRangeAsync(new()
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Product 1",
-                    Price = 20,
-                    CreatedDate = DateTime.UtcNow,
-                    Stock = 10
-                },
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Product 2",
-                    Price = 10,
-                    CreatedDate = DateTime.UtcNow,
-                    Stock = 5
-                },
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Product 3",
-                    Price = 50,
-                    CreatedDate = DateTime.UtcNow,
-                    Stock = 15
-                }
-            });
+            //await _productWriteRepository.AddRangeAsync(new()
+            //{
+            //    new()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        Name = "Product 1",
+            //        Price = 20,
+            //        CreatedDate = DateTime.UtcNow,
+            //        Stock = 10
+            //    },
+            //    new()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        Name = "Product 2",
+            //        Price = 10,
+            //        CreatedDate = DateTime.UtcNow,
+            //        Stock = 5
+            //    },
+            //    new()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        Name = "Product 3",
+            //        Price = 50,
+            //        CreatedDate = DateTime.UtcNow,
+            //        Stock = 15
+            //    }
+            //});
 
+            Product p = await _productReadRepository.GetByIdAsync("eb0a8457-b6f2-4b0c-a0be-658629059470", false);
+            p.Name = "Klavye";
             await _productWriteRepository.SaveAsync();
         }
 
